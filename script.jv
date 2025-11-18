@@ -1,5 +1,4 @@
 // --- 1. Data Kamus (Mensimulasikan File CSV) ---
-// Data disimpan dalam objek JavaScript untuk pencarian cepat.
 const dictionaryData = {
     // English -> Indonesian
     "apple": "apel",
@@ -28,8 +27,8 @@ const dictionaryData = {
 
 // --- 2. Fungsi Pencarian ---
 function searchWord(event) {
-    // Memeriksa apakah fungsi dipanggil oleh tombol atau tombol 'Enter' (key code 13)
-    if (event && event.type === 'keyup' && event.keyCode !== 13) {
+    // Memeriksa apakah fungsi dipanggil oleh tombol 'Cari' atau tombol 'Enter' pada keyboard.
+    if (event && event.type === 'keyup' && event.key !== 'Enter') {
         return;
     }
 
@@ -46,10 +45,12 @@ function searchWord(event) {
 
     if (translation) {
         document.getElementById('resultTitle').innerText = "Terjemahan Ditemukan!";
-        resultElement.innerHTML = `**${word}** diterjemahkan menjadi: **${translation}**`;
+        // **PERBAIKAN SINTAKSIS:** Menggunakan <strong> untuk teks tebal.
+        resultElement.innerHTML = `<strong>${word}</strong> diterjemahkan menjadi: <strong>${translation}</strong>`;
     } else {
         document.getElementById('resultTitle').innerText = "Tidak Ditemukan";
-        resultElement.innerHTML = `Kata **'${word}'** tidak ada dalam kamus mini ini.`;
+        // **PERBAIKAN SINTAKSIS:** Menggunakan <strong> untuk teks tebal.
+        resultElement.innerHTML = `Kata <strong>'${word}'</strong> tidak ada dalam kamus mini ini.`;
     }
 }
 
@@ -57,19 +58,19 @@ function searchWord(event) {
 function displayWordOfTheDay() {
     const wotdElement = document.getElementById('wotdText');
     
-    // Ambil kata kunci Bahasa Inggris (karena kamus simetris)
+    // Ambil kata kunci Bahasa Inggris
     const englishWords = ["apple", "book", "cat", "dog", "house", "study", "teacher", "student", "computer", "water"];
     
-    // Menggunakan tanggal hari ini untuk mendapatkan index yang konsisten
+    // Menggunakan tanggal hari ini untuk mendapatkan index yang konsisten (fitur unik aplikasi) 
     const today = new Date();
-    // Gunakan tanggal (1-31) untuk menghasilkan indeks yang stabil sepanjang hari
     const randomIndex = today.getDate() % englishWords.length; 
     
     const wordOfTheDay = englishWords[randomIndex];
     const translation = dictionaryData[wordOfTheDay];
 
     if (wordOfTheDay && translation) {
-        wotdElement.innerHTML = `Kosakata: **${wordOfTheDay}** (${translation})`;
+        // **PERBAIKAN SINTAKSIS:** Menggunakan <strong> untuk teks tebal.
+        wotdElement.innerHTML = `Kosakata: <strong>${wordOfTheDay}</strong> (${translation})`;
     } else {
         wotdElement.innerHTML = "Tidak dapat memuat kata hari ini.";
     }
@@ -77,5 +78,3 @@ function displayWordOfTheDay() {
 
 // Menjalankan fitur "Kata Hari Ini" saat halaman dimuat
 window.onload = displayWordOfTheDay;
-   
-
