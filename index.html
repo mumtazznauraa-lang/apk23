@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DictionaryLite: Kamus Mini 📚</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>DictionaryLite</h1>
+        <p>Kamus Mini Bahasa Inggris–Indonesia (Offline)</p>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Ketik kata (cth: book atau buku)..." onkeyup="searchWord(event)">
+            <button onclick="searchWord()">Cari</button>
+        </div>
+
+        <div class="result-box">
+            <h2 id="resultTitle">Hasil Terjemahan</h2>
+            <p id="resultText">Masukkan kata di atas untuk memulai pencarian.</p>
+        </div>
+        
+        <hr>
+
+        <div class="word-of-the-day">
+            <h3>✨ Kata Hari Ini ✨</h3>
+            <p id="wotdText"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
